@@ -5,7 +5,7 @@ import com.xaehu.testview.bean.KugouSearch;
 
 import java.util.Map;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -15,9 +15,9 @@ import retrofit2.http.QueryMap;
 public interface RequestInterface {
 
     @GET("song?format=json")
-    Call<KugouSearch> searchKugou(@QueryMap Map<String,Object> map);
+    Observable<KugouSearch> searchKugou(@QueryMap Map<String,Object> map);
 
     @FormUrlEncoded
     @POST("getSongInfo.php?cmd=playInfo")
-    Call<KugouDetail> getDetail(@Field("hash") String hash);
+    Observable<KugouDetail> getDetail(@Field("hash") String hash);
 }
